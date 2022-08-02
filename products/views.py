@@ -1,3 +1,30 @@
 from django.shortcuts import render
 
 # Create your views here.
+# As a developer, I want to create a GET endpoint the responds with a 200 success status code and all of the products within the Product table.
+
+# As a developer, I want to create a GET by id endpoint that does the following things:
+# · Accepts a value from the request’s URL (The id of the product to retrieve).
+# · Returns a 200 status code.
+# · Responds with the product in the database that has the id that was sent through the URL.
+
+# As a developer, I want to create a POST endpoint that does the following things:
+# · Accepts a body object from the request in the form of a Product model.
+# · Adds the new product to the database.
+# · Returns a 201 status code.
+# · Responds with the newly created product object.
+
+# As a developer, I want to create a PUT endpoint that does the following things:
+# · Accepts a value from the request’s URL (The id of the product to be updated).
+# · Accepts a body object from the request in the form of a Product model.
+# · Finds the product in the Product table and updates that product with the properties that were sent in the request’s body.
+# · Returns a 200 status code.
+# · Responds with the newly updated product object.
+
+# As a developer, I want to create a DELETE endpoint that does the following things:
+# · Accepts a value from the request’s URL.
+# · Returns a 204 status code (NO CONTENT).
+
+# As a developer, I want to use Postman to make a POST, PUT, DELETE, and both GET requests 
+# (get by id and get all) request to my REST web API, save it to a collection, and 
+# then export it as a JSON from Postman.
