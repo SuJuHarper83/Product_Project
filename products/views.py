@@ -30,7 +30,7 @@ def product_list(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    serializer = ProductSerializer(Product, many=True)
+    serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
 # As a developer, I want to create a PUT endpoint that does the following things:
