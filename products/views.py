@@ -20,6 +20,19 @@ from .serializers import ProductSerializer
 # · Returns a 201 status code.
 # · Responds with the newly created product object.
 
+@api_view (['GET', 'POST'])
+def product_list(request):
+    if request.method == 'GET':
+        products = Product.objects.all()
+    elif request.method == 'POST':
+        serializer = ProductSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    serializer = ProductSerializer(Product, many=True)
+    return Response(serializer.data)
+
 # As a developer, I want to create a PUT endpoint that does the following things:
 # · Accepts a value from the request’s URL (The id of the product to be updated).
 # · Accepts a body object from the request in the form of a Product model.
@@ -30,6 +43,20 @@ from .serializers import ProductSerializer
 # As a developer, I want to create a DELETE endpoint that does the following things:
 # · Accepts a value from the request’s URL.
 # · Returns a 204 status code (NO CONTENT).
+
+@api_view (['GET', 'PUT', 'DELETE'])
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'GET':
+        serializer = ProductSerializer(product);
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = ProductSerializer(Product, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+    elif request.method == 'DELETE':
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 # As a developer, I want to use Postman to make a POST, PUT, DELETE, and both GET requests 
 # (get by id and get all) request to my REST web API, save it to a collection, and 
