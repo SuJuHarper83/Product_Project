@@ -1,7 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Product
+from .serializers import ProductSerializer
 
 # Create your views here.
-# As a developer, I want to create a GET endpoint the responds with a 200 success status code and all of the products within the Product table.
+# As a developer, I want to create a GET endpoint the responds with a 200 success status code and 
+# all of the products within the Product table.
 
 # As a developer, I want to create a GET by id endpoint that does the following things:
 # · Accepts a value from the request’s URL (The id of the product to retrieve).
